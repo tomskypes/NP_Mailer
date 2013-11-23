@@ -9,30 +9,32 @@ or using composer, which is more recommended:
 
 1. Add this project into your composer.json:
 
-    ```json
-    "require": {
-        "nikolaposa/np_mailer": "dev-master"
-    }
-    ```
+```json
+"require": {
+    "nikolaposa/np_mailer": "dev-master"
+}
+```
 
 2. Tell composer to download NP_Mailer by running update command:
 
-    ```bash
-    $ php composer.phar update
-    ```
+```bash
+$ php composer.phar update
+```
     
 For more information about composer itself, please refer to [getcomposer.org](http://getcomposer.org/).
 
 ### Enable the module in your `application.config.php`:
 
-    <?php
-    return array(
-        'modules' => array(
-            // ...
-            'NP_Mailer',
-        ),
+```php
+<?php
+return array(
+    'modules' => array(
         // ...
-    );
+        'NP_Mailer',
+    ),
+    // ...
+);
+```
     
 ## Usage
 
@@ -89,25 +91,27 @@ Mailer service provide ability to have "ready-to-send" mail configurations, with
 Those can be supplied directly through the Mailer's API (`addConfig(s)` method) or through configuration - `configs` option. 
 Examples of such configuration might look like:
 
-    <?php
-    return array(
+```php
+<?php
+return array(
+    // ...
+    'mailer' => array(
         // ...
-        'mailer' => array(
-            // ...
-            'configs' => array(
-                'foo' => array(
-                    'subject' => 'Foobar',
-                    'from' => 'foo@bar.com',
-                ),
-                'test' => array(
-                    'to' => 'test123@example.com',
-                    'from' => 'test@example.com',
-                )
+        'configs' => array(
+            'foo' => array(
+                'subject' => 'Foobar',
+                'from' => 'foo@bar.com',
+            ),
+            'test' => array(
+                'to' => 'test123@example.com',
+                'from' => 'test@example.com',
             )
-            // ...
-        ),
+        )
         // ...
-    );
+    ),
+    // ...
+);
+```
     
 In this example, two mail configurations are specified, one named `foo` and the other named `test`.
 
@@ -115,44 +119,44 @@ In this example, two mail configurations are specified, one named `foo` and the 
 
 #### Sending basic mail
 
-    ```php
-    $mailer->send(array(
-       'to' => 'test@example.com',
-       'subject' => 'Test',
-       'body' => 'Hello world!',
-    ));
-    ```
+```php
+$mailer->send(array(
+   'to' => 'test@example.com',
+   'subject' => 'Test',
+   'body' => 'Hello world!',
+));
+```
     
 #### Sending HTML email
 
-    ```php
-    $mailer->send(array(
-       'to' => 'test@example.com',
-       'subject' => 'Test',
-       'bodyHtml' => '<html><body><p>Hello world!</p></body></html>',
-    ));
-    ```
+```php
+$mailer->send(array(
+   'to' => 'test@example.com',
+   'subject' => 'Test',
+   'bodyHtml' => '<html><body><p>Hello world!</p></body></html>',
+));
+```
     
 #### HTML mail from ViewModel
 
-    ```php
-    $viewModel = new \Zend\View\Model\ViewModel(array(
-        'foo' => 'bar',
-        'baz' => 'bat',
-    ));
-    $viewModel->setTemplate('template/name');
-     
-    $mailer->send(array(
-       'to' => 'test@example.com',
-       'subject' => 'Test',
-       'viewModel' => $viewModel,
-    ));
-    ```
+```php
+$viewModel = new \Zend\View\Model\ViewModel(array(
+    'foo' => 'bar',
+    'baz' => 'bat',
+));
+$viewModel->setTemplate('template/name');
+ 
+$mailer->send(array(
+   'to' => 'test@example.com',
+   'subject' => 'Test',
+   'viewModel' => $viewModel,
+));
+```
     
 #### Sending configured mail
 
-    ```php
-        $mailer->send(array(
-       'bodyHtml' => '<html><body><p>Hello world!</p></body></html>',
-    ), 'someMailiingConfigurationName');
-    ```
+```php
+    $mailer->send(array(
+   'bodyHtml' => '<html><body><p>Hello world!</p></body></html>',
+), 'someMailiingConfigurationName');
+```

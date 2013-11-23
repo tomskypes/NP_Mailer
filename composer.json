@@ -25,11 +25,11 @@
         "zendframework/zend-view": "2.*",
         "zendframework/zend-mime": "2.*",
         "zendframework/zend-i18n": "2.*",
+        "zendframework/zend-modulemanager": "2.*",
         "zendframework/zend-servicemanager": "2.*",
     },
     "require-dev": {
         "zendframework/zend-loader": "2.*",
-        "zendframework/zend-modulemanager": "2.*",
     },
     "autoload": {
         "psr-0": {
