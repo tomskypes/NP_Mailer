@@ -1,0 +1,43 @@
+{
+    "name": "nikolaposa/np_mailer",
+    "description": "ZF2 Module which facilitates and simplifies sending of email messages",
+    "type": "library",
+    "keywords": [
+        "zf2",
+        "zend",
+        "module",
+        "mailer",
+        "mail",
+        "email",
+    ],
+    "homepage": "https://github.com/nikolaposa/NP_Mailer",
+    "authors": [
+        {
+            "name": "Nikola Posa",
+            "email": "posa.nikola@gmail.com",
+            "homepage": "http://www.nikolaposa.in.rs"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zend-mail": "2.*",
+        "zendframework/zend-filter": "2.*",
+        "zendframework/zend-view": "2.*",
+        "zendframework/zend-mime": "2.*",
+        "zendframework/zend-i18n": "2.*",
+        "zendframework/zend-servicemanager": "2.*",
+    },
+    "require-dev": {
+        "zendframework/zend-loader": "2.*",
+        "zendframework/zend-modulemanager": "2.*",
+    },
+    "autoload": {
+        "psr-0": {
+            "NP_Mailer": "src/",
+            "NP_MailerTest": "test/"
+        },
+        "classmap": [
+            "./"
+        ]
+    }
+}
