@@ -7,7 +7,7 @@ NP_Mailer is a ZF2 Module which facilitates and simplifies sending of email mess
 You can install this module either by cloning this project into your `./vendor/` directory, 
 or using composer, which is more recommended:
 
-1. Add this project into your composer.json:
+Add this project into your composer.json:
 
 ```json
 "require": {
@@ -15,7 +15,7 @@ or using composer, which is more recommended:
 }
 ```
 
-2. Tell composer to download NP_Mailer by running update command:
+Tell composer to download NP_Mailer by running update command:
 
 ```bash
 $ php composer.phar update
