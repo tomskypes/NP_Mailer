@@ -1,14 +1,15 @@
 {
-    "name": "nikolaposa/np_mailer",
+    "name": "nikolaposa/np-mailer",
     "description": "ZF2 Module which facilitates and simplifies sending of email messages",
     "type": "library",
+    "license": "GPL-3.0",
     "keywords": [
         "zf2",
         "zend",
         "module",
         "mailer",
         "mail",
-        "email",
+        "email"
     ],
     "homepage": "https://github.com/nikolaposa/NP_Mailer",
     "authors": [
@@ -26,10 +27,10 @@
         "zendframework/zend-mime": "2.*",
         "zendframework/zend-i18n": "2.*",
         "zendframework/zend-modulemanager": "2.*",
-        "zendframework/zend-servicemanager": "2.*",
+        "zendframework/zend-servicemanager": "2.*"
     },
     "require-dev": {
-        "zendframework/zend-loader": "2.*",
+        "zendframework/zend-loader": "2.*"
     },
     "autoload": {
         "psr-0": {
