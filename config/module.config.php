@@ -21,8 +21,8 @@ return array(
     'np_mailer' => array(
         'params_filters' => array(
             //Default parameters filters
-            array('name' => 'translator'),
-            array('name' => 'htmlbodybuilder')
+            'translator' => array('name' => 'translator'),
+            'htmlbodybuilder' => array('name' => 'htmlbodybuilder')
         ),
     ),
 );
