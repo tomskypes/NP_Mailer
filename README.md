@@ -1,6 +1,7 @@
 # NP_Mailer
 
-NP_Mailer is a ZF2 Module which facilitates and simplifies sending of email messages.
+NP_Mailer is a ZF2 Module which facilitates and improves sending of email messages.
+It provides rich set of options for performing mailing routines.
 
 ## Installation
 
@@ -35,13 +36,20 @@ return array(
     // ...
 );
 ```
+
+## Features
+
+* Sending of HTML emails
+* Building emails from ViewModel instances
+* Email layouts
+* Mailing configuration
     
 ## Usage
 
 ### Mailer service
 
 `NP_Mailer\Mailer` service is the central point of this module and the one that the consumer should address 
-when sending some email message. It is available under the `Mailer` service name.
+when sending some email message. It is available under the `NP_Mailer` service name.
 
 ### Configuration
 
@@ -156,7 +164,7 @@ $mailer->send(array(
 #### Sending configured mail
 
 ```php
-    $mailer->send(array(
+$mailer->send(array(
    'bodyHtml' => '<html><body><p>Hello world!</p></body></html>',
 ), 'someMailiingConfigurationName');
 ```

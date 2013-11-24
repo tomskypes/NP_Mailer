@@ -172,9 +172,4 @@ class Mailer
         
         return $message;
     }
-    
-    //TODO
-    /*public function sendToQueue(array $params, $mailConfigName = null)
-    {
-    }*/
 }

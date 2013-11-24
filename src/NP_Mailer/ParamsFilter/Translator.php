@@ -64,6 +64,10 @@ class Translator implements FilterInterface, TranslatorAwareInterface
      */
     public static function factory(ServiceLocatorInterface $serviceLocator)
     {
+        if ($serviceLocator instanceof \Zend\ServiceManager\AbstractPluginManager) {
+            $serviceLocator = $serviceLocator->getServiceLocator();
+        }
+        
         $instance = new static();
         $instance->setTranslator($serviceLocator->get('Translator'));
         return $instance;

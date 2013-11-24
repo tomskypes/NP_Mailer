@@ -54,6 +54,10 @@ class HtmlBodyBuilder implements FilterInterface
      */
     public static function factory(ServiceLocatorInterface $serviceLocator)
     {
+        if ($serviceLocator instanceof \Zend\ServiceManager\AbstractPluginManager) {
+            $serviceLocator = $serviceLocator->getServiceLocator();
+        }
+        
         $htmlBodyBuilder = new static();
         $htmlBodyBuilder->setViewRenderer(clone $serviceLocator->get('Zend\View\Renderer\PhpRenderer'));
         return $htmlBodyBuilder;

@@ -78,7 +78,7 @@ class MailerFactoryTest extends PHPUnit_Framework_TestCase
             'from' => 'foo@bar.com',
         );
         $this->setConfig(array(
-            'mailer' => array(
+            'np_mailer' => array(
                 'defaults' => $defaults
             )
         ));
@@ -101,7 +101,7 @@ class MailerFactoryTest extends PHPUnit_Framework_TestCase
             )
         );
         $this->setConfig(array(
-            'mailer' => array(
+            'np_mailer' => array(
                 'configs' => $configs
             )
         ));
@@ -110,11 +110,6 @@ class MailerFactoryTest extends PHPUnit_Framework_TestCase
         
         $this->assertCount(count($configs), $mailer->getConfigs());
         $this->assertEquals($configs, $mailer->getConfigs());
-    }
-    
-    public function testParamsFiltersPluginManagerCreation()
-    {
-        $this->assertInstanceOf('NP_Mailer\ParamsFilterPluginManager', $this->factory->getParamsFiltersPluginManager());
     }
     
     public function testInjectingParamsFiltersThroughPluginManager()
@@ -130,7 +125,7 @@ class MailerFactoryTest extends PHPUnit_Framework_TestCase
             ),
         );
         $this->setConfig(array(
-            'mailer' => array(
+            'np_mailer' => array(
                 'params_filters' => $paramsFiltersConf
             )
         ));
@@ -158,7 +153,7 @@ class MailerFactoryTest extends PHPUnit_Framework_TestCase
             ),
         );
         $this->setConfig(array(
-            'mailer' => array(
+            'np_mailer' => array(
                 'params_filters' => $paramsFiltersConf
             )
         ));
@@ -179,7 +174,7 @@ class MailerFactoryTest extends PHPUnit_Framework_TestCase
             'layout' => 'test',
         );
         $this->setConfig(array(
-            'mailer' => array(
+            'np_mailer' => array(
                 'params_filters' => array(
                     array(
                         'name' => $paramsFiltersName,

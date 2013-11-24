@@ -20,10 +20,12 @@
 namespace NP_Mailer;
 
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
+use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
 
 class Module implements 
     AutoloaderProviderInterface,
+    ConfigProviderInterface,
     ServiceProviderInterface
 {
     public function getAutoloaderConfig()
@@ -36,13 +38,22 @@ class Module implements
             )
         );
     }
+    
+    public function getConfig()
+    {
+        return include __DIR__ . '/../../config/module.config.php';
+    }
 
     public function getServiceConfig()
     {
         return array(
+            'invokables' => array(
+                'NP_MailerParamsFiltersManager' => 'NP_Mailer\ParamsFilterPluginManager',
+            ),
             'factories' => array(
-                'Mailer' => 'NP_Mailer\MailerFactory',
+                'NP_Mailer' => 'NP_Mailer\MailerFactory',
             )
         );
     }
+    
 }

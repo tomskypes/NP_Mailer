@@ -36,13 +36,20 @@ class MailerFactory implements FactoryInterface
     protected static $paramsFilters = null;
     
     /**
+     * @var ServiceLocatorInterface 
+     */
+    protected $services;
+
+    /**
      * @param \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
      * @return \NP_Mailer\Mailer
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
+        $this->services = $serviceLocator;
+        
         $mailerConfig = $serviceLocator->get('Config');
-        $mailerConfig = isset($mailerConfig['mailer']) ? $mailerConfig['mailer'] : array();
+        $mailerConfig = isset($mailerConfig['np_mailer']) ? $mailerConfig['np_mailer'] : array();
         
         $transport = (isset($mailerConfig['transport'])) 
                 ? $serviceLocator->get($mailerConfig['transport']) 
@@ -66,32 +73,32 @@ class MailerFactory implements FactoryInterface
     protected function injectParamsFilters(Mailer $mailer, array $paramsFilters)
     {
         foreach ($paramsFilters as $info) {
-            $filter = self::paramsFilterFactory($info['name'], isset($info['options']) ? $info['options'] : null);
+            $filter = $this->paramsFilterFactory($info['name'], isset($info['options']) ? $info['options'] : null);
             $mailer->addParamsFilter($filter);
         }
     }
     
-    public static function getParamsFiltersPluginManager()
+    protected function getParamsFiltersPluginManager()
     {
         if (self::$paramsFilters === null) {
-            self::$paramsFilters = new ParamsFilterPluginManager();
+            self::$paramsFilters = $this->services->get('NP_MailerParamsFiltersManager');
         }
         
         return self::$paramsFilters;
     }
     
-    public static function setParamsFiltersPluginManager(ParamsFilterPluginManager $paramsFilters)
+    public function setParamsFiltersPluginManager(ParamsFilterPluginManager $paramsFilters)
     {
         self::$paramsFilters = $paramsFilters;
     }
     
-    public static function paramsFilterFactory($filterName, $options = array())
+    public function paramsFilterFactory($filterName, $options = array())
     {
         if ($filterName instanceof ParamsFilter\FilterInterface) {
             //Already object
             $filter = $filterName;
         } else {
-            $filter = self::getParamsFiltersPluginManager()->get($filterName);
+            $filter = $this->getParamsFiltersPluginManager()->get($filterName);
         }
 
         if ($options) {
