@@ -2,7 +2,7 @@
     "name": "nikolaposa/np-mailer",
     "description": "ZF2 Module which facilitates and simplifies sending of email messages",
     "type": "library",
-    "license": "GPL-3.0",
+    "license": "MIT",
     "keywords": [
         "zf2",
         "zend",
