@@ -60,7 +60,7 @@ class Translator implements FilterInterface, TranslatorAwareInterface
         }
         
         $instance = new static();
-        $instance->setTranslator($serviceLocator->get('Translator'));
+        $instance->setTranslator($serviceLocator->get('MvcTranslator'));
         return $instance;
     }
     
